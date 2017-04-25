@@ -31,7 +31,7 @@ bool binarySearch(int low, int high, int value, int values[])
         return binarySearch(low, mid - 1, value, values);
     }
     // if value might be present after mid
-    else
+    else if(values[mid] < value)
     {
         return binarySearch(mid + 1, high, value, values);
     }

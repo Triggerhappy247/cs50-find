@@ -21,17 +21,18 @@
 
 int main(int argc, string argv[])
 {
-    // TODO: comment me
+    // Ensure Proper Usage
+    // Prevent user from entering less than 1 and more than 3 commandline arguments
     if (argc != 2 && argc != 3)
     {
         printf("Usage: ./generate n [s]\n");
         return 1;
     }
 
-    // TODO: comment me
+    // Convert second string into a number
     int n = atoi(argv[1]);
 
-    // TODO: comment me
+    // Set seed for srand. If no seed is provided,then it takes time as seed
     if (argc == 3)
     {
         srand48((long) atoi(argv[2]));
@@ -41,7 +42,7 @@ int main(int argc, string argv[])
         srand48((long) time(NULL));
     }
 
-    // TODO: comment me
+    // Outputs 'n' pseudorandom numbers less than LIMIT
     for (int i = 0; i < n; i++)
     {
         printf("%i\n", (int) (drand48() * LIMIT));

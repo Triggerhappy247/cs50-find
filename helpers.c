@@ -56,5 +56,37 @@ bool search(int value, int values[], int n)
 void sort(int values[], int n)
 {
     // TODO: implement an O(n^2) sorting algorithm
+    // declare counting array and index 
+    int count[MAX], sortValues[n];
+    // Loop to initialize all values of count to 0
+    for(int i = 0; i < MAX; i++)
+    {
+        count[i] = 0;
+    }
+    // Loop to count elements in values and store their
+    // occurences in count[]
+    for(int i = 0; i < n; i++)
+    {
+        count[values[i]]++;
+    }
+    
+    // Determine starting postion of each number 
+    for(int i = 1; i < MAX; i++)
+    {
+        count[i] += count[i - 1];
+    }
+
+    // Place elements in right postion
+    for(int i = n - 1; i >= 0; i--)
+    {
+        sortValues[count[values[i]] - 1] = values[i];
+        count[i]--;
+    }
+    
+    // Transfer back sorted elements
+    for(int i = 0; i < n; i++)
+    {
+        values[i] = sortValues[i];
+    }
     return;
 }
